@@ -76,7 +76,7 @@ nav.main-nav a:hover, nav.main-nav a[aria-current="page"]{ border-color:var(--se
   text-shadow: 1px 1px 3px rgba(242,232,211,0.75);
 }
 .hero p{
-  font-style:italic; font-size:1.15rem; color: var(--nero);
+  font-style:italic; font-size:1.5rem; color: var(--nero);
   max-width:600px; margin:0 auto 1.6rem;
   text-shadow: 1px 1px 4px rgba(242,232,211,0.9), 0 0 10px rgba(242,232,211,0.6);
 }
