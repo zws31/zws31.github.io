@@ -1,0 +1,237 @@
+/* ===================================================================
+   Cont el coo in di nivôl — archivio di Tito Zini
+   Palette: seppia, crema, nero spento — carta d'epoca.
+   =================================================================== */
+
+:root{
+  --crema:        #f2e8d3;
+  --crema-dark:   #e6d7b8;
+  --card:         #faf3e3;
+  --seppia:       #7a5236;
+  --seppia-dark:  #5a3c28;
+  --seppia-light: #a67c52;
+  --nero:         #2b2420;
+  --ink:          #3a2e28;
+  --ink-soft:     #6b5a4a;
+  --rule:         #d6c39c;
+
+  --display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --body:    'Source Serif 4', Georgia, serif;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background: var(--crema);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size:17px;
+  line-height:1.6;
+  display:flex; flex-direction:column; min-height:100vh;
+}
+
+a{ color: var(--seppia); }
+a:hover{ color: var(--seppia-light); }
+
+/* ---------------- header ---------------- */
+.site-header{
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:.8rem;
+  padding: 1.1rem 2.2rem;
+  background: var(--nero);
+  color: var(--crema);
+  border-bottom: 3px solid var(--seppia-light);
+}
+.site-header .brand{ font-family:var(--display); font-weight:700; font-size:1.3rem; }
+.site-header .brand small{
+  display:block; font-style:italic; font-weight:400; font-size:0.85rem;
+  color:#cbb489; margin-top:.15rem;
+}
+.brand-logo{ display:flex; align-items:center; line-height:0; }
+.brand-logo img{ display:block; border-radius:6px; }
+nav.main-nav{ display:flex; gap:1.3rem; flex-wrap:wrap; font-size:.92rem; }
+nav.main-nav a{ color:var(--crema); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px; }
+nav.main-nav a:hover, nav.main-nav a[aria-current="page"]{ border-color:var(--seppia-light); color:#e3caa5; }
+
+/* ---------------- hero (cielo con nuvole, SVG) ---------------- */
+.hero{
+  position:relative;
+  overflow:hidden;
+  color: var(--nero);
+  text-align:center;
+  padding: 5rem 1.5rem 4rem;
+  background:
+    linear-gradient(rgba(43,36,32,0.35), rgba(43,36,32,0.35)),
+    url('sky.jpg') center/cover no-repeat;
+  filter: sepia(85%) contrast(100%) brightness(92%) saturate(115%);
+}
+.hero .hero-content{ position:relative; z-index:1; filter:none; }
+.hero h1{
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 0 0 .6rem;
+  color: var(--nero);
+  text-shadow: 1px 1px 3px rgba(242,232,211,0.75);
+}
+.hero p{
+  font-style:italic; font-size:1.15rem; color: var(--nero);
+  max-width:600px; margin:0 auto 1.6rem;
+  text-shadow: 1px 1px 4px rgba(242,232,211,0.9), 0 0 10px rgba(242,232,211,0.6);
+}
+.hero .btn{
+  display:inline-block;
+  background: var(--seppia);
+  color: var(--crema);
+  padding: .7rem 1.6rem;
+  border-radius:4px;
+  text-decoration:none;
+  font-weight:bold;
+  box-shadow:0 3px 8px rgba(0,0,0,.2);
+}
+.hero .btn:hover{ background: var(--seppia-dark); color:var(--crema); }
+.hero-actions{ display:flex; flex-direction:column; align-items:center; gap:.9rem; }
+
+/* ---------------- layout ---------------- */
+main{ max-width: 900px; margin:0 auto; padding: 0 1.5rem 4rem; flex:1; width:100%; }
+main.full-width{ max-width:none; padding:0; }
+main.content-page{ padding-top:2.4rem; }
+main.poem-page{ padding-top:2.2rem; max-width:820px; }
+
+.rule{ border:0; height:1px; background:var(--rule); margin:2.4rem 0; }
+
+h2.section-title{
+  font-family: var(--display); font-size:1.5rem; color:var(--seppia-dark);
+  margin: 0 0 1.1rem;
+}
+
+
+/* ---------------- barra di controllo in alto ---------------- */
+.control-bar{
+  display:flex; gap:.8rem; flex-wrap:wrap; align-items:center;
+  padding: .9rem 2.2rem;
+  background: var(--crema-dark);
+  border-bottom: 1px solid var(--rule);
+  position: sticky; top:0; z-index:5;
+}
+.control-bar input[type="search"]{
+  flex:1; min-width:180px;
+  padding:.55rem .8rem; border:1px solid var(--rule); border-radius:4px;
+  background:var(--card); color:var(--ink); font-family:var(--body); font-size:.92rem;
+}
+.control-bar select{
+  padding:.55rem .7rem; border:1px solid var(--rule); border-radius:4px;
+  background:var(--card); color:var(--ink); font-family:var(--body); font-size:.88rem;
+}
+.control-bar #poesie-count{ font-size:.8rem; color:var(--ink-soft); white-space:nowrap; }
+
+.poesie-detail{ padding: 1.6rem 2rem; }
+.poesie-detail .placeholder{ color:var(--ink-soft); font-style:italic; padding-top:2rem; }
+.poesie-detail h2{ font-family:var(--display); font-size:1.6rem; margin:0 0 .2rem; color:var(--ink); }
+.poesie-detail .d-meta{ font-size:.8rem; color:var(--ink-soft); margin-bottom:1.2rem; }
+.poesie-detail .d-meta .tag{
+  display:inline-block; background:var(--seppia); color:var(--crema);
+  border-radius:3px; padding:.1rem .5rem; font-size:.72rem; margin-right:.5rem;
+}
+.poesie-columns{ display:grid; grid-template-columns:1fr 1fr; gap:1.8rem; }
+@media (max-width:640px){ .poesie-columns{ grid-template-columns:1fr; } }
+.poesie-columns .col-label{
+  font-size:.72rem; text-transform:uppercase; letter-spacing:.08em;
+  color:var(--ink-soft); border-bottom:1px dotted var(--rule); padding-bottom:.3rem; margin-bottom:.6rem;
+}
+.poem-text{ white-space:pre-line; font-size:.97rem; }
+.poem-text p.verso{ margin:0 0 1em; }
+
+/* ---------------- indice statico poesie ---------------- */
+.poesie-list-static{ columns: 2; column-gap: 2.5rem; }
+@media (max-width:700px){ .poesie-list-static{ columns:1; } }
+.poesie-list-static li{ break-inside: avoid; border-bottom:1px solid var(--rule); }
+.poesie-list-static li.hidden{ display:none; }
+.poesie-list-static a{
+  display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
+  padding:.6rem 0; text-decoration:none; color:var(--ink);
+}
+.poesie-list-static a:hover .p-title{ color:var(--seppia); }
+.poesie-list-static .p-title{ font-family:var(--display); font-size:1rem; }
+.poesie-list-static .p-meta{ font-size:.72rem; color:var(--ink-soft); white-space:nowrap; flex-shrink:0; }
+
+footer{
+  text-align:center; padding:2rem 1.5rem; margin-top:auto;
+  background:var(--nero); color:#b5a494; border-top:1px solid #4a3833;
+  font-size:.85rem;
+}
+
+blockquote.pull{
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--seppia-dark);
+  border-left: 3px solid var(--seppia-light);
+  padding-left: 1.2rem;
+  margin: 1.8rem 0;
+}
+
+dl.glossario dt{
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--seppia-dark);
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+}
+dl.glossario dd{ margin: .3rem 0 0; color: var(--ink); }
+
+/* ===================================================================
+   Ottimizzazioni mobile — solo spaziatura, dimensioni tocco, wrapping.
+   Nessuna modifica a palette colori o font-family.
+   =================================================================== */
+@media (max-width: 640px){
+  .site-header{ padding: .8rem 1rem; gap:.5rem; }
+  .site-header .brand{ font-size: 1.05rem; }
+  .site-header .brand small{ font-size: .78rem; }
+  nav.main-nav{ gap: .5rem 1rem; font-size:.85rem; width:100%; }
+
+  .hero{ padding: 3rem 1.2rem 2.4rem; }
+  .hero p{ font-size: 1rem; }
+  .hero .btn{ padding:.8rem 1.3rem; font-size:.92rem; }
+
+  main{ padding: 0 1rem 3rem; }
+
+  .control-bar{
+    padding: .7rem 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .6rem;
+  }
+  .control-bar input[type="search"],
+  .control-bar select{
+    width: 100%;
+    min-width: 0;
+    /* 16px minimo: sotto questa soglia iOS Safari zooma automaticamente sul campo al tocco */
+    font-size: 16px;
+    padding: .7rem .8rem;
+  }
+  .control-bar #poesie-count{ text-align:center; }
+
+  .poesie-detail{ padding: 1.2rem 1rem; }
+
+  .poesie-list-static a{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .15rem;
+    padding: .75rem 0;
+  }
+  .poesie-list-static .p-meta{ white-space:normal; }
+
+  article.poesie-detail nav[style]{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .6rem;
+  }
+}
+
+/* Target di tocco più ampi su dispositivi touch, indipendentemente dalla larghezza schermo */
+@media (pointer: coarse){
+  nav.main-nav a{ padding: .5rem 0; display:inline-block; }
+  .poesie-list-static a{ min-height: 44px; }
+}

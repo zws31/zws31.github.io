@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zws31.github.io/sitemap.xml
